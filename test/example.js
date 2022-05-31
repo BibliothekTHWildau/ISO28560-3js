@@ -1,10 +1,3 @@
-# ISO28560-3js
-Convert byte arrays to ISO28560-3 json and reverse
-
-## Usage
-Examples of usage found in test folder.
-
-```
 import ISO28560DataModel from "iso28560-3";
 
 let model = {
@@ -53,23 +46,15 @@ let model = {
   ]
 }
 
-// json -> byte
-
 let tagSize = 32; // small rfid tag, will truncate data model
 tagSize = 112;
-
-// set tagSize if you want to write data to an rfid tag
 let typedArray = new ISO28560DataModel(model).getByte(tagSize);
-
-// or omit tagSize to get full byte array
+// or 
 // typedArray = new ISO28560DataModel(json).getByte()
-
-let byte = Array.from(typedArray);
+let byte = Array.from(typedArray)
 console.log(byte);
 
-// reverse byte -> json
-// byte must not be a typed array
 let json = new ISO28560DataModel(byte);
+
 console.log(json)
 
-```
